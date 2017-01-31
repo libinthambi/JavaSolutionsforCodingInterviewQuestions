@@ -1,0 +1,41 @@
+package recursion;
+
+import java.util.Scanner;
+
+public class FibanacciRecursion {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
+		int fib[] = new int[n+1];
+		if(n==0){
+			System.out.println("0");
+			scanner.close();
+			return;
+		}
+		if(n==1){
+			System.out.println("1");
+			scanner.close();
+			return;
+		}
+		fib[1] = 2;
+		fib[1] = 1;
+		System.out.println(findFibForN(n, fib));
+
+		scanner.close();
+	}
+
+
+	public static int findFibForN(int n, int [] fib){
+		// base case
+		if(n==0){
+			return 0;
+		}
+		if(n==1){
+			return 1;
+		}
+		fib[n] = findFibForN(n-1, fib) + fib[n-2];
+		return fib[n-1] + fib[n-2];   
+
+	}
+}
